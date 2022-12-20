@@ -1,6 +1,8 @@
 package com.example.admin.utility;
 
+import com.example.admin.dao.RoleDao;
 import com.example.admin.dao.UserDao;
+import com.example.admin.entities.Role;
 import com.example.admin.entities.User;
 import jakarta.persistence.EntityNotFoundException;
 
@@ -11,6 +13,43 @@ public class OperationUtility {
         fetchUsers(userDao);
         updateUser(userDao);
         deleteUser(userDao);
+    }
+
+    private static void rolesOperations(RoleDao roleDao){
+        createRoles(roleDao);
+        updateRole(roleDao);
+        fetchRole(roleDao);
+    }
+
+    private static void createRoles(RoleDao roleDao){
+        Role role1 = new Role();
+        role1.setRoleId(1L);
+        role1.setName("Admin");
+        roleDao.save(role1);
+
+        Role role2 = new Role();
+        role2.setRoleId(1L);
+        role2.setName("Student");
+        roleDao.save(role2);
+
+        Role role3 = new Role();
+        role3.setRoleId(1L);
+        role3.setName("Instructor");
+        roleDao.save(role3);
+    }
+
+    private static void updateRole(RoleDao roleDao){
+        Role role = roleDao.findById(1L).orElseThrow(() -> new EntityNotFoundException("Role Not Found"));
+        role.setName("NewAdmin");
+        roleDao.save(role);
+    }
+
+    private static void deleteRole(RoleDao roleDao){
+        roleDao.deleteById(2L);
+    }
+
+    private static void fetchRole(RoleDao roleDao){
+        roleDao.findAll().forEach(role -> System.out.println(role.toString()));
     }
 
     private static void createUsers(UserDao userDao){
