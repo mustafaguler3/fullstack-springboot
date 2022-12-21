@@ -26,6 +26,8 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Instructor instructor;
 
+
+
     public void assignRoleToUser(Role role){
         this.roles.add(role);
         role.getUsers().add(this);
