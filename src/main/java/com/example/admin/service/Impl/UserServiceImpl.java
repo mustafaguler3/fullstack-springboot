@@ -6,13 +6,16 @@ import com.example.admin.entities.Role;
 import com.example.admin.entities.User;
 import com.example.admin.service.UserService;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserDao userDao;
+    @Autowired
     private RoleDao roleDao;
 
     @Override

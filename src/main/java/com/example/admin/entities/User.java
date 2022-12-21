@@ -26,6 +26,10 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Instructor instructor;
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
 
     public void assignRoleToUser(Role role){

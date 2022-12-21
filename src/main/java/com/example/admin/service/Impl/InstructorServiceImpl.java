@@ -4,6 +4,7 @@ import com.example.admin.dao.InstructorDao;
 import com.example.admin.entities.Instructor;
 import com.example.admin.service.InstructorService;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Transactional
 public class InstructorServiceImpl implements InstructorService {
 
+    @Autowired
     private InstructorDao instructorDao;
 
     @Override

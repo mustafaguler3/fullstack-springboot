@@ -8,6 +8,7 @@ import com.example.admin.service.StudentService;
 import com.example.admin.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
@@ -18,7 +19,9 @@ import java.util.Optional;
 @Transactional
 public class StudentServiceImpl implements StudentService {
 
+    @Autowired
     private StudentDao studentDao;
+    @Autowired
     private UserService userService;
 
     @Override

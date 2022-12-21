@@ -7,6 +7,7 @@ import com.example.admin.entities.Instructor;
 import com.example.admin.service.CourseService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,9 @@ import java.util.List;
 @Transactional
 public class CourseServiceImpl implements CourseService {
 
+    @Autowired
     private InstructorDao instructorDao;
+    @Autowired
     private CourseDao courseDao;
 
     public CourseServiceImpl(InstructorDao instructorDao, CourseDao courseDao) {

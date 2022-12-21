@@ -26,6 +26,16 @@ public class Instructor {
     @JoinColumn(name = "user_id",referencedColumnName = "user_id",nullable = false)
     private User user;
 
+    public Instructor() {
+    }
+
+    public Instructor(String firstName, String lastName, String summary,String password) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.summary = summary;
+    }
+
     public Set<Course> getCourses() {
         return courses;
     }

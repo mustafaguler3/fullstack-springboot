@@ -12,7 +12,7 @@ public interface CourseDao extends JpaRepository<Course,Long> {
     List<Course> findCoursesByCourseNameContains(String name);
 
     @Query(value = "select c from Course as c where c.courseId in (select e.course_id from enrolled_in as e where e" +
-            ".student_id=:studentId)")
+            ".student_id=:studentId)",nativeQuery = true)
     List<Course> getCoursesByStudentId(@Param("studentId") Long studentId);
 }
 
