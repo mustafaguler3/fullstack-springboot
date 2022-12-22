@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="col-md-6 offset-3 mt-3">
+        <form th:action="@{save}" th:object="${course}" class="form-control" method="post">
+            <div class="mb-3 mt-3">
+                <label class="form-label">Course Id</label>
+                <input type="number" name="courseId" class="form-control" th:value="${course.getCourseId()}">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label">Course Name</label>
+                <input type="text" id="courseName" name="courseName" class="form-control"
+                       th:value="${course.getCourseName()}">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label">Course Duration</label>
+                <input type="text" id="courseDuration" name="courseId" class="form-control"
+                       th:value="${course.getCourseDuration()}">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label">Course Description</label>
+                <input type="text" name="courseDescription" class="form-control"
+                       th:value="${course.getCourseDescription()}" readonly="readonly">
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label">Instructor</label>
+                <select th:field="${course.instructor}" name="instructor" class="form-select">
+                    <option th:each="instructor : ${listInstructors}"
+                            th:text="${instructor.getFirstName()} + '' + ${instructor.getLastName()}"
+                            th:value="${instructor.getInstructorId()}">
+
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3 mt-3" th:each="student:${course.getStudents()}">
+                <input hidden name="students" type="text" class="form-control"
+                       th:value="${course.students[studentStat.index].getStudentId()}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
